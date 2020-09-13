@@ -10,12 +10,13 @@ public class Task_5 {
         int second = sc.nextInt();
         int third = sc.nextInt();
 
-        if(first <= second && first <= third){
-            System.out.println(first);
-        } else if (second <= third){
-            System.out.println(second);
-        } else {
-            System.out.println(third);
+        int [] arr = {first, second, third};
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if(arr[i] < min){
+                min = arr[i];
+            }
         }
+        System.out.println(min);
     }
 }

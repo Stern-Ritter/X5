@@ -8,10 +8,11 @@ public class Task_2 {
         Scanner sc = new Scanner(System.in);
         int number = sc.nextInt();
         int sum = 0;
-        while(number / 10 != 0 || number % 10 != 0){
+        while(number > 9){
             sum += number % 10;
             number /= 10;
         }
+        sum += number;
         System.out.println(sum);
     }
 }
