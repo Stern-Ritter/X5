@@ -14,19 +14,20 @@ public class Task_7 {
         double rostovCost = 1.98;
         double krasnodarCost = 2.69;
         double kirovCost = 5.00;
+        double minutes = 10d;
 
         switch (number){
             case 905:
-                System.out.println(moscow + ". Стоимость разговора: " + moscowCost * 10);
+                System.out.println(moscow + ". Стоимость разговора: " + moscowCost * minutes);
                 break;
             case 194:
-                System.out.println(rostov + ". Стоимость разговора: " + rostovCost * 10);
+                System.out.println(rostov + ". Стоимость разговора: " + rostovCost * minutes);
                 break;
             case 491:
-                System.out.println(krasnodar + ". Стоимость разговора: " + krasnodarCost * 10);
+                System.out.println(krasnodar + ". Стоимость разговора: " + krasnodarCost * minutes);
                 break;
             case 800:
-                System.out.println(kirov + ". Стоимость разговора: " + kirovCost * 10);
+                System.out.println(kirov + ". Стоимость разговора: " + kirovCost * minutes);
                 break;
             default:
                 System.out.println("Некорректный код города.");
