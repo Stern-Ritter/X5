@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 
 public class Terminal {
     private static BankingService bs;
-    private static Scanner sc;
 
     public static void main(String[] args) {
         showMenu();
@@ -26,7 +25,7 @@ public class Terminal {
     public static void startSevice(){
         bs = new BankingService();
         Scanner sc = new Scanner(System.in);
-        String str = null;
+        String str;
         List<String> params = new ArrayList<>();
         while (!(str = sc.nextLine()).equals("exit")){
             params.clear();
