@@ -28,6 +28,18 @@ public class MyLinkedList<E> implements MyList<E> {
         return first == null;
     }
 
+    private void checkElementIndex(int index){
+        if (!(index >= 0 && index < size)) {
+            throw new IllegalArgumentException("Incorrect index: " + index);
+        }
+    }
+
+    private void checkListEmpty(){
+        if (isEmpty()) {
+            throw new RuntimeException("List is empty");
+        }
+    }
+
     @Override
     public void add(E item) {
         Node newNode = new Node(item);
@@ -43,17 +55,12 @@ public class MyLinkedList<E> implements MyList<E> {
 
     @Override
     public void remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("Incorrect index: " + index);
-        }
-        if (isEmpty()) {
-            throw new RuntimeException("List is empty");
-        }
+        checkElementIndex(index);
+
         if (index == 0) {
             removeFirst();
             return;
         }
-
         if (index == size - 1) {
             removeLast();
             return;
@@ -71,9 +78,6 @@ public class MyLinkedList<E> implements MyList<E> {
     }
 
     private void removeLast() {
-        if (isEmpty()) {
-            throw new RuntimeException("List is empty");
-        }
         if (last.previous == null) {
             first = null;
         } else {
@@ -84,9 +88,6 @@ public class MyLinkedList<E> implements MyList<E> {
     }
 
     private void removeFirst() {
-        if (isEmpty()) {
-            throw new RuntimeException("List is empty");
-        }
         first = first.next;
         if (isEmpty()) {
             last = null;
@@ -98,9 +99,7 @@ public class MyLinkedList<E> implements MyList<E> {
 
     @Override
     public void remove(E item) {
-        if (isEmpty()) {
-            throw new RuntimeException("List is empty");
-        }
+        checkListEmpty();
         if (first.value.equals(item)) {
             removeFirst();
             return;
@@ -125,12 +124,7 @@ public class MyLinkedList<E> implements MyList<E> {
 
     @Override
     public E get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("Incorrect index: " + index);
-        }
-        if (isEmpty()) {
-            throw new RuntimeException("List is empty");
-        }
+        checkElementIndex(index);
         Node current = first;
         int i = 0;
         while (i != index) {
@@ -142,17 +136,6 @@ public class MyLinkedList<E> implements MyList<E> {
 
     @Override
     public void clear(){
-        if (isEmpty()) {
-            return;
-        }
-        Node current = first;
-        for (int i = 0; i < size; i++) {
-            Node next = current.next;
-            current.value = null;
-            current.next = null;
-            current.previous = null;
-            current = next;
-        }
         first = last = null;
         size = 0;
     }
